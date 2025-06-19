@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<h2>Lista de vuelos</h2>
+<a href="{% url 'agregar_vuelo' %}" class="btn btn-success mb-3">Agregar Vuelo</a>
+<table class="table table-bordered">
+    <tr>
+        <th>Numero de vuelo</th>
+        <th>Origen</th>
+        <th>Destino</th>
+        <th>Hora de salida </th>
+        <th>Hora de llegada</th>
+        <th>Fecha de Salida</th>
+        <th>Fecha de llegada</th>
+
+
+    </tr>
+    {% for i in vuelos %}
+    <tr>
+        <td>{{ i.num_vuelo }}</td>
+        <td>{{ i.origen }}</td>
+        <td>{{ i.destino }}</td>
+        <td>{{ i.hora_salida }}</td>
+        <td>{{ i.hora_llegada }}</td>
+        <td>{{ i.fecha_salida }}</td>
+        <td>{{ i.fecha_llegada }}</td>
+
+        <td>
+            <a href="{% url 'editar_vuelo' i.id %}" class="btn btn-warning btn-sm">Editar</a>
+            <a href="{% url 'eliminar_vuelo' i.id %}" class="btn btn-danger btn-sm">Eliminar</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
